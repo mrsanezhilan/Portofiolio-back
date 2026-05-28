@@ -33,8 +33,8 @@ const allowedOrigins = (process.env.CLIENT_URLS || process.env.CLIENT_URL || def
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }))
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) return callback(null, true)
-    return callback(new Error(`CORS blocked origin: ${origin}`))
+    // Allow all origins to bypass CORS issues for the portfolio
+    return callback(null, true)
   },
   credentials: true
 }))
